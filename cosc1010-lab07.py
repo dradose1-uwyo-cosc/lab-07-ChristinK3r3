@@ -1,8 +1,8 @@
-# Your Name Here
+# Christin Kere
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 10/28/24
+# Lab 07
+# Lab Section: 14
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -18,10 +18,18 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+while True:
+    upper_bound= input("Please enter a positive integer for factorial calculation:")
+    if upper_bound.isdigit():
+        upper_bound= int(upper_bound)
+        for i in range(1,upper_bound+1):
+            factorial*= i
+        print(f"The result of the factorial based on the given bound is {factorial}")
+        print("*"*75)
+        break
+    else:
+        print("Input is not valid, please enter a positive integer.")
 
-print(f"The result of the factorial based on the given bound is {factorial}")
-
-print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
 # Sum all inputs. When the user enters 'exit' (regardless of casing) end the loop
 # Upon ending the loop print the sum
@@ -38,9 +46,16 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
+while True:
+    user_input= input("Enter an integer to add to the sum, or 'exit' to finish: ")
+    if user_input.lower()=="exit":
+        break
+    elif user_input.isdigit() or (user_input.startswith('-') and user_input[1:].isdigit()):
+        num_sum+= int(user_input)
+    else:
+        print("Input is not valid, please enter a positive integer.")
 
 print(f"Your final sum is {num_sum}")
-
 print("*"*75)
 # Now you will be creating a two operand calculator
 # It will support the following operators: +,-,/,*,% 
@@ -58,5 +73,27 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
+while True:
+    user_input= input("Enter an operation in the for 'operand operator operand', of 'exit'. ")
+    if user_input.lower()== "exit":
+        break
+    operators= ['+', '-', '/', '%']
+    for op in operators:
+        if op in user_input:
+            operands= user_input.split(op)
+            if operands[0].isdigit() and operands [1].isdigit():
+                operand1= int(operands[0])
+                operand2= int(operands[1])
+                if op == '+':
+                    result= operand1 + operand2
+                elif op == '-':
+                    result= operand1 - operand2
+                elif op == '/':
+                    result= operand1/operand2 if operand2 != 0 else "Undefined"
+                elif op == '%':
+                    result = operand1%operand2 if operand2 != 0 else "Undefined"   
+                print(f"The result of {operand1}{op}{operand2} is {result}")
+                break 
+    else:
+        print("Invalid format or unsuported operation")
         
