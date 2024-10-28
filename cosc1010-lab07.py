@@ -3,7 +3,7 @@
 # 10/28/24
 # Lab 07
 # Lab Section: 14
-# Sources, people worked with, help given to: 
+# Sources, people worked with, help given to: Danny's PPT, Youtube
 # your
 # comments
 # here
@@ -77,7 +77,7 @@ while True:
     user_input= input("Enter an operation in the for 'operand operator operand', of 'exit'. ")
     if user_input.lower()== "exit":
         break
-    operators= ['+', '-', '/', '%']
+    operators= ['+', '-', '/', '*', '%']
     for op in operators:
         if op in user_input:
             operands= user_input.split(op)
@@ -88,6 +88,8 @@ while True:
                     result= operand1 + operand2
                 elif op == '-':
                     result= operand1 - operand2
+                elif op =='*':
+                    result = operand1*operand2
                 elif op == '/':
                     result= operand1/operand2 if operand2 != 0 else "Undefined"
                 elif op == '%':
@@ -96,4 +98,3 @@ while True:
                 break 
     else:
         print("Invalid format or unsuported operation")
-        
